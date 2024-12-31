@@ -30,4 +30,20 @@ router.get("/:id", auth, async (req, res) => {
   }
 });
 
+// Create a new object
+router.post("/", auth, async (req, res) => {
+  try {
+    const { name, description } = req.body;
+    const object = new Object({
+      name,
+      description,
+      user: req.userData.userId,
+    });
+    await object.save();
+    res.status(201).json(object);
+  } catch (error) {
+    res.status(500).json({ message: "Error creating object" });
+  }
+});
+
 export default router;
