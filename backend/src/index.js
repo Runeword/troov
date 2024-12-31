@@ -1,8 +1,9 @@
-import 'dotenv/config'
+import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
+import objectRoutes from "./routes/object";
 
 const app = express();
 
@@ -18,6 +19,7 @@ mongoose
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/objects", objectRoutes);
 
 // Error handling middleware
 app.use((err, res) => {
