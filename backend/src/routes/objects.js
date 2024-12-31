@@ -14,4 +14,20 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
+// Get a single object by ID
+router.get("/:id", auth, async (req, res) => {
+  try {
+    const object = await Object.findOne({
+      _id: req.params.id,
+      user: req.userData.userId,
+    });
+    if (!object) {
+      return res.status(404).json({ message: "Object not found" });
+    }
+    res.json(object);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching object" });
+  }
+});
+
 export default router;
