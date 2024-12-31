@@ -3,7 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
-import objectRoutes from "./routes/object";
+import objectRoutes from "./routes/objects.js";
 
 const app = express();
 
