@@ -100,6 +100,6 @@ async function deleteObject(id) {
 }
 
 function editObject(id) {
-  router.push(`/objects/${id}/edit`)
+  router.push(`/objects/edit/${id}`)
 }
 </script>
