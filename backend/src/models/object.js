@@ -1,5 +1,18 @@
+/**
+ * @module models/object
+ */
+
 import mongoose from "mongoose";
 
+/**
+ * Object Schema Definition
+ * @typedef {Object} ObjectSchema
+ * @property {string} name - Name of the object
+ * @property {string} description - Description of the object
+ * @property {mongoose.Types.ObjectId} user - Reference to the user who owns this object
+ * @property {Date} createdAt - Timestamp of object creation
+ * @property {Date} updatedAt - Timestamp of object update
+ */
 const objectSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -32,4 +45,5 @@ objectSchema.pre("save", function (next) {
   next();
 });
 
-export default mongoose.model("Object", objectSchema);
+const Object = mongoose.model("Object", objectSchema);
+export default Object;

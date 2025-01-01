@@ -1,6 +1,17 @@
+/**
+ * @module models/user
+ */
+
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
+/**
+ * User Schema Definition
+ * @typedef {Object} UserSchema
+ * @property {string} email - User's email (unique, required)
+ * @property {string} password - Hashed password
+ * @property {Date} createdAt - Timestamp of user creation
+ */
 const userSchema = new mongoose.Schema({
   email: {
     type: String,

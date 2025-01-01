@@ -1,10 +1,22 @@
+/**
+ * @module routes/auth
+ */
+
 import express from "express";
 import jwt from "jsonwebtoken";
 import User from "../models/user.js";
 
 const router = express.Router();
 
-// Register new user
+/**
+ * Register new user
+ * @route POST /api/auth/register
+ * @param {Object} req.body
+ * @param {string} req.body.email - User's email
+ * @param {string} req.body.password - User's password
+ * @returns {Object} 201 - { token: string }
+ * @throws {Error} 400 - User already exists
+ */
 router.post("/register", async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -33,7 +45,15 @@ router.post("/register", async (req, res, next) => {
   }
 });
 
-// Login existing user
+/**
+ * Login existing user
+ * @route POST /api/auth/login
+ * @param {Object} req.body
+ * @param {string} req.body.email - User's email
+ * @param {string} req.body.password - User's password
+ * @returns {Object} 200 - { token: string }
+ * @throws {Error} 401 - Invalid credentials
+ */
 router.post("/login", async (req, res, next) => {
   try {
     const { email, password } = req.body;
