@@ -18,7 +18,6 @@
             packages = [
               pkgs.typescript
               pkgs.nodejs_23
-              pkgs.deno
               pkgs.nodePackages.pnpm
             ];
           };
